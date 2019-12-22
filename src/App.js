@@ -5,6 +5,11 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 
 function App() {
+    let user = {
+      name: "Carlos",
+      age: 21,
+      hobbies: ["nadar", "programar", "leer"]
+    }
   return (
     <div className="container">
       <div className="row">
@@ -16,12 +21,15 @@ function App() {
       </div>
       <div className="row">
         <div className="col-sm-12">
-          <Home/>
+          <Home user={user} juegos={10} lenguaje={"programacion"} >
+            <p className="">parrafo desde app</p>
+          </Home>
         </div>
         
       </div>
     </div>
   );
+  
 }
 
 export default App;

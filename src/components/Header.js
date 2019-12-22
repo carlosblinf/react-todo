@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-
 function Header() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">Navbar</a>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a className="navbar-brand" href="#">MyApp</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -13,11 +12,12 @@ function Header() {
                     <a className="nav-item nav-link active" href="#">Home <span className="sr-only">(current)</span></a>
                     <a className="nav-item nav-link" href="#">Features</a>
                     <a className="nav-item nav-link" href="#">Pricing</a>
-                    <a className="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a className="nav-item nav-link disabled" href="#" aria-disabled="true">Disabled</a>
                 </div>
             </div>
         </nav>
     );
+   
 }
 
 export default Header;
