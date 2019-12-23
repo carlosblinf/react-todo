@@ -8,7 +8,30 @@ export default class Home extends React.Component {
       age: props.age,
       homeLink: props.initialLink
     };
+    console.log("Constructor");
   }
+
+  componentWillMount() {
+    console.log("Component will mount");
+  }
+
+  componentDidMount() {
+    console.log("Component did mount");
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("should Component update", nextProps, nextState);
+    return true;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Component did update", prevProps, prevState);
+  }
+  
+  componentWillUnmount() {
+    console.log("Component will unmount");
+  }
+  
 
   makeOlder(){
     this.setState({
