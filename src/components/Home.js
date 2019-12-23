@@ -1,71 +1,13 @@
-
+/* eslint-disable react/jsx-no-undef */
 import React from "react";
-
-export default class Home extends React.Component {
-  constructor(props){
-    super();
-    this.state = {
-      age: props.age,
-      homeLink: props.initialLink
-    };
-    console.log("Constructor");
-  }
-
-  componentWillMount() {
-    console.log("Component will mount");
-  }
-
-  componentDidMount() {
-    console.log("Component did mount");
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("should Component update", nextProps, nextState);
-    return true;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log("Component did update", prevProps, prevState);
-  }
-  
-  componentWillUnmount() {
-    console.log("Component will unmount");
-  }
-  
-
-  makeOlder(){
-    this.setState({
-      age: this.state.age + 1,
-    });
-  }
-
-  onChangeLink(){
-    this.props.changeLink(this.state.homeLink)
-  }
-
-  onHandleChangeLink(event){
-    this.setState({
-      homeLink: event.target.value
-    });
-  }
-
+class Home extends React.Component {
   render(){
     return (
-        <div className="content">
-          <p className="">Este es Home Componer!!</p>
-          <p className="">Tu nombre es {this.props.name} y edad {this.state.age}</p>
-          <hr/>
-          <button onClick={ this.makeOlder.bind(this) } className="btn btn-primary">Hasme viejo!</button>
-          <hr/>
-          <button onClick={ ()=> this.makeOlder() } className="btn btn-primary">Hasme viejo2!</button>
-          <hr/>
-          <button onClick={ this.props.greet } className="btn btn-primary">Greet</button>
-          <hr/>
-          <input type="text" value={this.state.homeLink}
-           onChange={(event) => this.onHandleChangeLink(event)} />
-          <br/>
-          <button onClick={ this.onChangeLink.bind(this) } className="btn btn-primary">Change Header</button>
+        <div>
+          <h3>Home</h3>
         </div>
     );
   }
  }
+
+export default Home;

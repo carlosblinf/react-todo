@@ -1,63 +1,47 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import Header from "./components/Header";
-import Home from "./components/Home";
 
-export default class App extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      homeLink: "MyApp",
-      homeMounted: true
-    };
+import Todos from './components/Todos';
+
+class App extends React.Component {
+  state = {
+    todos: [
+      {
+        id: 1,
+        title: "Mi primer todo",
+        completed: false
+      },
+      {
+        id: 2,
+        title: "Mi mejor cancion",
+        completed: false
+      },
+      {
+        id: 3,
+        title: "Mi grandioso premio",
+        completed: false
+      }
+    ]
   }
-  onGreet(){
-    alert('Hello!!')
-  }
-  onChangeLinkName(name) {
+
+  markTodo = (id) => {
     this.setState({
-      homeLink: name
-    });
-  }
-  onChangeHomeMounted(){
-    this.setState({
-      homeMounted: !this.state.homeMounted
+      todos: this.state.todos.map( todo=>{
+        if (todo.id === id) {
+          todo.completed = !todo.completed
+        }
+        return todo;
+      })
     });
   }
 
   render() {
-    let homCop = "";
-    if(this.state.homeMounted){
-      homCop = (
-        <Home
-          age={10}
-          name={"Carlos"}
-          greet={this.onGreet}
-          changeLink={this.onChangeLinkName.bind(this)}
-          initialLink={this.state.homeLink}
-        />
-      );
-    }
     return (
       <div className="container">
-        <div className="row mb-4">
-          <div className="col-sm-12">
-            <Header homeLink={this.state.homeLink} />
-          </div>
-          
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
-            {homCop}
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
-            <button onClick={this.onChangeHomeMounted.bind(this)} className="btn btn-secondary" >(Un)Mount Home Comp</button>
-          </div>
-        </div>
+        <Todos todos={this.state.todos} markTodo={this.markTodo} />
       </div>
     );
   }
 }
+
+export default App;
