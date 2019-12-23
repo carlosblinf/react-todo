@@ -37,6 +37,7 @@ export default class App extends React.Component {
             name={"Carlos"} 
             greet={this.onGreet}
             changeLink={this.onChangeLinkName.bind(this)}
+            initialLink={this.state.homeLink}
              />
           </div>
           
