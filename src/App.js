@@ -4,32 +4,29 @@ import './App.css';
 import Header from "./components/Header";
 import Home from "./components/Home";
 
-function App() {
-    let user = {
-      name: "Carlos",
-      age: 21,
-      hobbies: ["nadar", "programar", "leer"]
-    }
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col-sm-12">
-          <Header/>
-        </div>
-        
-        
-      </div>
-      <div className="row">
-        <div className="col-sm-12">
-          <Home user={user} juegos={10} lenguaje={"programacion"} >
-            <p className="">parrafo desde app</p>
-          </Home>
-        </div>
-        
-      </div>
-    </div>
-  );
-  
-}
+export default class App extends React.Component {
 
-export default App;
+  onGreet(){
+    alert('Hello!!')
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <div className="row mb-4">
+          <div className="col-sm-12">
+            <Header/>
+          </div>
+          
+          
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+            <Home age={10} name={"Carlos"} greet={this.onGreet} />
+          </div>
+          
+        </div>
+      </div>
+    );
+  }
+}

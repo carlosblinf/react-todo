@@ -1,19 +1,32 @@
 
 import React from "react";
 
-function Home(props) {
-    var user = props.user;
+export default class Home extends React.Component {
+  constructor(props){
+    super();
+    this.state = {
+      age: props.age
+    };
+  }
+
+  makeOlder(){
+    this.setState({
+      age: this.state.age + 1
+    });
+  }
+
+  render(){
     return (
         <div className="content">
-          <p className="">Hola {user.name} </p>
-          <p className="">Has completado {props.juegos} juegos </p>
-          <p className="">de {props.lenguaje}</p>
-          <h4>Hobbies</h4>
-          <ul>
-            {user.hobbies.map((hobby, i) => <li key={i} >{hobby}</li> )}
-          </ul>
-          { props.children }
+          <p className="">Este es Home Componer!!</p>
+          <p className="">Tu nombre es {this.props.name} y edad {this.state.age}</p>
+          <hr/>
+          <button onClick={ this.makeOlder.bind(this) } className="btn btn-primary">Hasme viejo!</button>
+          <hr/>
+          <button onClick={ ()=> this.makeOlder() } className="btn btn-primary">Hasme viejo2!</button>
+          <hr/>
+          <button onClick={ this.props.greet } className="btn btn-primary">Greet</button>
         </div>
     );
+  }
  }
-export default Home;
