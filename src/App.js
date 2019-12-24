@@ -24,7 +24,7 @@ class App extends React.Component {
       .then(response => response.data)
       .then(data => this.setState({
         todos: data
-      }) )
+      }) );
   }
   
   markTodo = (id) => {
@@ -38,20 +38,22 @@ class App extends React.Component {
     });
   }
   delTodo = (id) => {
-    this.setState({
-      todos: [...this.state.todos.filter(todo =>
-        todo.id !== id )]
-    });
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then(response => response.data)
+      .then(data => this.setState({
+        todos: [...this.state.todos.filter(todo =>
+          todo.id !== id)]
+      }));
   }
   addTodo = (title) => {
-    const newTodo = {
-      id: this.state.todos.length+1,
+    axios.post('https://jsonplaceholder.typicode.com/todos',{
       title,
       completed: false
-    }
-    this.setState({
-      todos: [...this.state.todos, newTodo]
-    });
+    })
+      .then(response => response.data)
+      .then(data => this.setState({
+        todos:  [...this.state.todos, data]
+      }) );
   }
 
   render() {
