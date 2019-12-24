@@ -2,9 +2,10 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import axios from "axios";
+
 import './App.css';
 
 import Todos from './components/Todos';
@@ -15,25 +16,17 @@ import About from './components/About';
 
 class App extends React.Component {
   state = {
-    todos: [
-      {
-        id: 1,
-        title: "Mi primer todo",
-        completed: false
-      },
-      {
-        id: 2,
-        title: "Mi mejor cancion",
-        completed: false
-      },
-      {
-        id: 3,
-        title: "Mi grandioso premio",
-        completed: false
-      }
-    ]
+    todos: []
   }
-
+  
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+      .then(response => response.data)
+      .then(data => this.setState({
+        todos: data
+      }) )
+  }
+  
   markTodo = (id) => {
     this.setState({
       todos: this.state.todos.map( todo=>{
