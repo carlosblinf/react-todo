@@ -25,7 +25,7 @@ export class AddTodo extends Component {
           <input style={{flex: '10'}} 
           type="text" name="title"
           value={this.state.title} 
-          onChange={this.onChange.bind(this)}
+          onChange={this.onChange}
           className="form-control" 
           placeholder="Añadir Todo.." required />
           <button style={{ flex: '1' }} className="btn btn-dark" type="submit">Añadir</button>
